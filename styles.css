@@ -1,0 +1,18 @@
+*{
+    color: white;
+    background-color: darkgray;
+}
+
+.gameboard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 75vh;
+    width: 75vh;
+}
+
+.cell{
+    border: thin solid white;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
