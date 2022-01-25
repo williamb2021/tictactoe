@@ -29,6 +29,15 @@ body{
     border-radius: 5px;
 }
 
+button {
+    border: solid black ;
+    border-radius: 5px;
+    height: 5vh;
+    width: 15vh;
+    font-size: 24px;
+}
+
+
 .gameboard{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

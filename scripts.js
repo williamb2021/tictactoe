@@ -10,17 +10,18 @@ const gameBoard = (() => {
                 cell.textContent = gameBoardArray[cell.id];
             }
         })   
+
+        const clearButton = document.querySelector(".clear");
+        clearButton.addEventListener("click", () => {
+            __gameReset();
+        });
     }
 
-    const gameReset = () => {
-        const gameCells = document.querySelectorAll(".cell");
-        gameCells.forEach(cell => {
-            if(gameBoard.gameBoardArray[cell.id] != 0){
-                cell.textContent = "";
-            }
-        })   
+    const __gameReset = () => {
+        gameBoardArray.splice(0,gameBoardArray.length);
+        gameRender();           
     }
-
+    
     const checkGameWinner = () => {
         let result;
         if( gameBoardArray[0] + gameBoardArray[1] + gameBoardArray[2] === "XXX" || 
@@ -33,8 +34,7 @@ const gameBoard = (() => {
             gameBoardArray[6] + gameBoardArray[7] + gameBoardArray[8] === "XXX" 
         ){
             result  = alert("PLAYER TWO WINS");
-            gameBoardArray.splice(0,gameBoardArray.length);
-            gameRender();              
+            __gameReset();          
         }
         else if( gameBoardArray[0] + gameBoardArray[1] + gameBoardArray[2] === "OOO" || 
         gameBoardArray[0] + gameBoardArray[4] + gameBoardArray[8] === "OOO" ||
@@ -46,14 +46,17 @@ const gameBoard = (() => {
         gameBoardArray[6] + gameBoardArray[7] + gameBoardArray[8] === "OOO" 
         ){
             result  = alert("PLAYER TWO WINS");
-            gameBoardArray.splice(0,gameBoardArray.length);
-            gameRender();           
+            __gameReset();
         }
-         
+    }
+
+    const gameClear = () => {
+        
     }
 
     return {
         gameBoardArray, 
+        gameClear,
         gameRender,
         checkGameWinner
     };
@@ -89,7 +92,8 @@ const displayController = (() => {
                 }
             })
         })
-    }    
+    }
+    
 
     return {clickController};
 })();
